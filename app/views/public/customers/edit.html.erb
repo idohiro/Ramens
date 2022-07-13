@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+    <h2 class = "item-title-name">会員情報編集</h2>
+     　<% if @customer.errors.any? %>
+          <%= @customer.errors.count %>件のerrorが発生しました
+     　<% end %>
+      <%= form_with model:@customer,url:public_customer_path, local:true do |f| %>
+      <div class = "row">
+    　　<div class = "col-3">
+          <div class="form-group">
+            <%= f.label :"名前" %>
+          </div>
+        </div>
+        <div class = "col-3">
+          <div class="form-group">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+        </div>
+       </div>
+
+      <div class = "row">
+    　　<div class = "col-3">
+          <div class="form-group">
+            <%= f.label :"メールアドレス" %>
+          </div>
+        </div>
+        <div class = "col-3">
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class = "customer-btn">
+        <div class="customer-edit" style="display:inline">
+          <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        </div>
+
+        <div style="display:inline" class= "customer-edit-destroy">
+          <span><%= link_to customers_comfirm_path(), class: "btn btn-danger confirm_public_customer_#{@customer.id}" do %> 退会する<% end %></span>
+        </div>
+      </div>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>

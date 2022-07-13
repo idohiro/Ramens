@@ -1,0 +1,2 @@
+class RamenComment < ApplicationRecord
+end

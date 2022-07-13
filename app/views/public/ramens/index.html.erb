@@ -1,0 +1,29 @@
+<div class = "container-sm" >
+    <div class = "row">
+        <div class ="title-name">
+            <h2 style="display:inline">商品一覧 </h2> <p style="display:inline">(全<%= @ramen_all.count %>件)</p>
+        </div>
+    </div>
+
+    <div class = "row">
+
+        <% @ramens.each do |ramen| %>
+
+            <div class="index-card">
+                <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
+                    <div class = "index-body">
+                        <%#= image_tag item.get_item_image(150, 150) %>
+                    </div>
+                    <div class="index-title">
+                        <%= ramen.name %>
+                    </div>
+                    <div class="index-title">
+                        <%= ramen.price %>円（税抜き）
+                    </div>
+                <% end %>
+            </div>
+
+        <% end %>
+    </div>
+<%#= paginate @items %>
+</div>
