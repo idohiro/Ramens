@@ -37,7 +37,7 @@
         </div>
 
         <div style="display:inline" class= "customer-edit-destroy">
-          <span><%= link_to customers_comfirm_path(), class: "btn btn-danger confirm_public_customer_#{@customer.id}" do %> 退会する<% end %></span>
+          <span><%= link_to public_customers_confirm_path(current_customer), class: "btn btn-danger confirm_public_customer_#{@customer.id}" do %> 退会する<% end %></span>
         </div>
       </div>
 

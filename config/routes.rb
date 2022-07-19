@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'homes/top'
+  root :to =>"homes#top"
   get 'homes/about'
 
   namespace :admin do
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
      resources :relationships, only: [:followers, :followings, :create, :destroy]
      resources :ramens, only: [ :index, :edit, :update, :create, :show, :destroy, :new]
      resources :ramen_comments, only: [:create, :destroy]
+     post 'ramen/:id' => 'ramens#show'
   end
   # 顧客用
 # URL /customers/sign_in ...

@@ -1,11 +1,11 @@
 <div class = "container-sm" >
     <div class = "row">
         <div class ="title-name">
-            <h2 style="display:inline">商品一覧 </h2> <p style="display:inline">(全<%= @ramen_all.count %>件)</p>
+            <h2 style="display:inline">商品一覧 </h2>
         </div>
     </div>
 
-    <div class = "row">
+    <div class ="row">
 
         <% @ramens.each do |ramen| %>
 
@@ -20,10 +20,23 @@
                     <div class="index-title">
                         <%= ramen.price %>円（税抜き）
                     </div>
+                     <div class="index-title">
+                        <%= ramen.introduction %>詳細
+                    </div>
+                     <div class="index-title">
+                        <%= ramen.shop_name %>店名
+                    </div>
+                     <div class="index-title">
+                        <%= ramen.introduction %>詳細
+                    </div>
+                     <div class="index-title">
+                        <%= ramen.limited_information %>限定情報
+                    </div>
+
                 <% end %>
             </div>
 
         <% end %>
     </div>
-<%#= paginate @items %>
+<%#= paginate @ramens %>
 </div>
