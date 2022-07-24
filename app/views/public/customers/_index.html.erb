@@ -7,19 +7,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @customers.each do |customer| %>
+    <% customers.each do |customerr| %>
       <tr>
         <td><%= customer.name %></td>
         <td><%#= customer.followings.count %></td>
         <td><%#= customer.followers.count %></td>
         <% if current_customer != customer %>
-        <%# if current_customer.followings? (customer) %>
-        <td><%= link_to "フォロー外す", public_customer_relationships_path(customer), method: :delete %></td>
+        <% if current_user.following?(customer) %>
+        <td><%= link_to "フォロー外す", public_customer_relationships_path(customer.id), method: :delete %></td>
         <% else %>
         <td><%= link_to "フォローする", public_customer_relationships_path(customer.id), method: :post %></td>
         <% end %>
-
-        <td><%= link_to 'Show', public_customer_path(customer.id), class: "customer_#{customer.id}" %></td>
+        <% end %>
+        <td><%= link_to 'Show', customer, class: "customer_#{customer.id}" %></td>
       </tr>
     <% end %>
   </tbody>

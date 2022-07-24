@@ -4,6 +4,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
+       @customers = Customer.all
+    @ramen = Ramen.new
+    @customer = current_customer
   end
 
   def edit

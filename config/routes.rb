@@ -26,14 +26,17 @@ devise_for :customers,skip: [:passwords], controllers: {
         collection do
       patch :withdraw
       end
+       resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
     end
      resources :searchs, only: [:search, :search_result]
-     resources :relationships, only: [:followers, :followings, :create, :destroy]
      resources :ramens, only: [ :index, :edit, :update, :create, :show, :destroy, :new] do
          resource :favorites, only: [:create, :destroy]
+        resources :ramen_comments, only: [:create, :destroy]
      end
-     resources :ramen_comments, only: [:create, :destroy]
-     resources :favorites, only: [:create, :destroy]
+
+
      post 'ramen/:id' => 'ramens#show'
   end
 

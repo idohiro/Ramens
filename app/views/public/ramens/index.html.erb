@@ -12,7 +12,11 @@
             <div class="index-card">
                 <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
                     <div class = "index-body">
-                        <%#= image_tag item.get_item_image(150, 150) %>
+                          <% if ramen.ramen_image.attached? %>
+                            <%= image_tag ramen.ramen_image, size: "200x200" %>
+                            <% else %>
+                            <%= image_tag 'sample', size: "200x200" %>
+                          <% end %>
                     </div>
                     <div class="index-title">
                         <label for="ramen_introduction"> 商品名</label>
@@ -33,6 +37,18 @@
                        <label for="ramen_introduction">限定情報</label>
                         <%= ramen.limited_information %>
                     </div>
+                  <%#= render 'public/favorites/favorites', ramen: @ramen_id %>
+                                                                      <% if ramen.favorited?(current_customer) %>
+
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :delete do %>
+        <span style="color:red;">❤︎</span>
+    <% end %>
+<% else %>
+
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :post do %>
+        <span>︎♡</span>
+    <% end %>
+<% end %>
 
                 <% end %>
             </div>

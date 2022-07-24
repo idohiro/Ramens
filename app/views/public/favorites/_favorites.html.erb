@@ -1,11 +1,11 @@
-                        <% if ramen.favorited?(current_customer) %>
-    # 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ
-    <%= link_to public_ramen_favorite_path(ramen.id), method: :delete do %>
+                                                    <% if ramen.favorited?(current_customer) %>
+
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :delete do %>
         <span style="color:red;">❤︎</span>
     <% end %>
 <% else %>
-    # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ
-    <%= link_to public_ramen_favorite_path(ramen.id), method: :post do %>
-        <span>❤︎</span>
+
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :post do %>
+        <span>︎♡</span>
     <% end %>
 <% end %>
