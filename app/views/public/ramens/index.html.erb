@@ -15,22 +15,23 @@
                         <%#= image_tag item.get_item_image(150, 150) %>
                     </div>
                     <div class="index-title">
+                        <label for="ramen_introduction"> 商品名</label>
                         <%= ramen.name %>
                     </div>
                     <div class="index-title">
                         <%= ramen.price %>円（税抜き）
                     </div>
                      <div class="index-title">
-                        <%= ramen.introduction %>詳細
+                        <label for="ramen_introduction"> 詳細</label>
+                        <%= ramen.introduction %>
                     </div>
                      <div class="index-title">
-                        <%= ramen.shop_name %>店名
+                          <label for="ramen_introduction"> 店名</label>
+                        <%= ramen.shop_name %>
                     </div>
                      <div class="index-title">
-                        <%= ramen.introduction %>詳細
-                    </div>
-                     <div class="index-title">
-                        <%= ramen.limited_information %>限定情報
+                       <label for="ramen_introduction">限定情報</label>
+                        <%= ramen.limited_information %>
                     </div>
 
                 <% end %>
