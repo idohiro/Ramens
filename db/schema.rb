@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_24_050041) do
+ActiveRecord::Schema.define(version: 2022_07_25_110403) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,11 @@ ActiveRecord::Schema.define(version: 2022_07_24_050041) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "Name"
+    t.integer "customer_id", null: false
+    t.integer "ramen_id", null: false
+    t.index ["customer_id"], name: "index_ramen_comments_on_customer_id"
+    t.index ["ramen_id"], name: "index_ramen_comments_on_ramen_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -104,4 +109,6 @@ ActiveRecord::Schema.define(version: 2022_07_24_050041) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "customers"
   add_foreign_key "favorites", "ramen", column: "ramen_id"
+  add_foreign_key "ramen_comments", "customers"
+  add_foreign_key "ramen_comments", "ramen", column: "ramen_id"
 end

@@ -1,4 +1,6 @@
 class Public::RamensController < ApplicationController
+   before_action :authenticate_customer!, except: [:top,:about]
+    # before_action :correct_customer, only: [:edit, :update]
   def index
     @ramens = Ramen.all
      @ramen = Ramen.new
@@ -14,6 +16,8 @@ class Public::RamensController < ApplicationController
 
   def show
     @ramen =  Ramen.find(params[:id])
+      @comment = RamenComment.new
+     @comments = @ramen.ramen_comments
   end
 
   def create
@@ -21,7 +25,7 @@ class Public::RamensController < ApplicationController
     @ramen = Ramen.new(public_ramen_params)
 
     if @ramen.save
-      redirect_to public_customer_path(current_customer)
+      redirect_to public_ramen_path(@ramen.id)
     else
       render :new
     end
@@ -46,4 +50,11 @@ class Public::RamensController < ApplicationController
   def public_ramen_params
     params.require(:ramen).permit(:name, :shop_name, :ramen_image, :introduction, :price, :limited_information)
   end
+
+  # def correct_customer
+  #   @ramen = Ramen.find(params[:id])
+  #   @customer = @ramen.customer
+  #   redirect_to(public_ramens_path) unless @customer == current_customer
+  # end
+
 end

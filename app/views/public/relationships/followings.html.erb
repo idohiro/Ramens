@@ -1,6 +1,6 @@
 <h1>followed</h1>
 
-  <% if @customer.count ==0 %>
+  <% if @customers.count ==0 %>
   <p>フォロワーがいません</p>
   <% else  %>
 <table class='table'>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @customers.each do |user| %>
+    <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
         <td>フォロー数：<%= customer.followings.count %></td>

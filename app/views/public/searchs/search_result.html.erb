@@ -1,2 +1,27 @@
-<h1>Public::Searchs#search_result</h1>
-<p>Find me in app/views/public/searchs/search_result.html.erb</p>
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "Customer" %>
+
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがRamenの時) -->
+
+  </thead>
+    <tbody>
+      <% @ramens.each do |ramen| %>
+        <tr>
+          <td><%= ramen.name %></td>
+          <td><%= ramen.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

@@ -1,26 +1,34 @@
 <table class='table'>
+          <%= render 'public/searchs/search' %>
   <thead>
     <tr>
-      <th>image</th>
       <th>name</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th>フォローする</th>
+      <th>詳細</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
+
     <% @customers.each do |customer| %>
+    <% if customer.is_deleted != true %>
       <tr>
         <td><%= customer.name %></td>
-        <td><%#= customer.followings.count %></td>
-        <td><%#= customer.followers.count %></td>
+        <td><%= customer.followings.count %></td>
+        <td><%= customer.followers.count %></td>
         <% if current_customer != customer %>
-        <%# if current_customer.followings? (customer) %>
+        <% if current_customer.following?(customer) %>
         <td><%= link_to "フォロー外す", public_customer_relationships_path(customer), method: :delete %></td>
         <% else %>
         <td><%= link_to "フォローする", public_customer_relationships_path(customer.id), method: :post %></td>
         <% end %>
-
+        <% end %>
         <td><%= link_to 'Show', public_customer_path(customer.id), class: "customer_#{customer.id}" %></td>
       </tr>
     <% end %>
+    <% end %>
+
   </tbody>
 </table>

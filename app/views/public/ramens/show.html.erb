@@ -1,16 +1,16 @@
 <div class="container px-5 px-sm-0">
     <div class="row">
-        <div class = "col-sm-3"></div>
-        <div class="col-sm-2">
-               <h2 class="item-title-name">商品詳細</h2>
+        <div class = "col-sm-3">
+                 <%= render 'public/searchs/search' %>
+        </div>
+
+        <div class = "col-sm-4 item-show-text">
+                <h2 class="item-title-name">商品詳細</h2>
               <% if @ramen.ramen_image.attached? %>
                 <%= image_tag @ramen.ramen_image, size: "200x200" %>
               <% else %>
                 <%= image_tag 'sample', size: "200x200" %>
               <% end %>
-        </div>
-        <div class = "col-sm-1"></div>
-        <div class = "col-sm-4 item-show-text">
             <table class = "show">
             <tbody>
                 <tr class = "none">
@@ -30,6 +30,10 @@
                     <th class = "none">限定情報</th>
                     <th class = "none"><%= @ramen.limited_information %></th>
                 </tr>
+                <% else %>
+                <tr>
+
+                </tr>
                 <% end %>
                 <tr class = "none">
                     <th class = "none">税込価格</th>
@@ -38,19 +42,44 @@
                 <tr class = "none">
                     <th class = "none">
                         <div class = "edit">
+                         <%# if @ramen.customer == current_customer %>
                             <%= link_to "編集する", edit_public_ramen_path(@ramen.id), class: "btn btn-success" %>
                         </div>
                         <div class = "destroy">
                             <%= link_to "削除する", public_ramen_path(@ramen.id),method: :delete, class: "btn btn-danger" %>
                         </div>
+
                     </th>
 
                 </tr>
-                  <%= render 'public/favorites/favorites', ramen: @ramen %>
+
+            　　<td id="favorite_buttons_<%= @ramen.id %>">
+                <%= render 'public/favorites/favorites', ramen: @ramen %>
 
             </tbody>
             </table>
-
+            <div class="col-md-8 offset-md-1">
+            <h4>＜コメント一覧＞</h4>
+            <% @comments.each do |comment| %>
+            <p>
+            <strong><%= comment.customer.name %>：</strong>
+            <%= comment.body %>
+            <% if customer_signed_in? && current_customer.id == comment.customer_id %>
+            <%= link_to "Destroy", public_ramen_ramen_comment_path(comment.ramen, comment.id),  method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
+            </p>
+            <% end %>
+            <% if customer_signed_in? %>
+            <%= form_with model: [@ramen, @comment], url:public_ramen_ramen_comments_path(@ramen), local: true do |form| %>
+            <%= form.text_area :body, placeholder: "", rows: "4" %>
+          <div>
+              <%= form.submit "送信" %>
+          </div>
+          <% end %>
+          <% else %>
+           <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+          <% end %>
+          </div>
         </div>
     </div>
 </div>

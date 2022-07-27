@@ -1,6 +1,9 @@
 class Public::CustomersController < ApplicationController
+ before_action :authenticate_customer!, except: [:top,:about]
+
+
   def show
-    @customer=current_customer
+    @customer= Customer.find(params[:id])
   end
 
   def index
@@ -14,7 +17,7 @@ class Public::CustomersController < ApplicationController
     if @customer == current_customer
         render "edit"
     else
-      redirect_to public_customer_path(@customer)
+      redirect_to public_customer_path(current_customer)
     end
   end
   def update
@@ -39,8 +42,24 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:ramen_id)
+    @favorite_ramens = Ramen.find(favorites)
+  end
+
    def customer_params
     params.require(:customer).permit( :email, :name)
    end
+
+    private
+
+   def ensure_correct_customer
+    @Customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to public_customer_path(current_customer)
+    end
+   end
+
 
 end

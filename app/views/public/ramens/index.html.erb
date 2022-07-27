@@ -6,6 +6,8 @@
     </div>
 
     <div class ="row">
+        <div class='col-md-8 offset-md-1'>
+        <%= render 'public/searchs/search' %>
 
         <% @ramens.each do |ramen| %>
 
@@ -13,9 +15,9 @@
                 <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
                     <div class = "index-body">
                           <% if ramen.ramen_image.attached? %>
-                            <%= image_tag ramen.ramen_image, size: "200x200" %>
+                            <%= image_tag ramen.ramen_image, size: "100x100" %>
                             <% else %>
-                            <%= image_tag 'sample', size: "200x200" %>
+                            <%= image_tag 'sample', size: "100x100" %>
                           <% end %>
                     </div>
                     <div class="index-title">
@@ -23,6 +25,7 @@
                         <%= ramen.name %>
                     </div>
                     <div class="index-title">
+                         <label for="ramen_introduction"> 金額</label>
                         <%= ramen.price %>円（税抜き）
                     </div>
                      <div class="index-title">
@@ -54,6 +57,7 @@
             </div>
 
         <% end %>
+        </div>
     </div>
 <%#= paginate @ramens %>
 </div>

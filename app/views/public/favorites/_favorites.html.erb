@@ -1,11 +1,11 @@
                                                     <% if ramen.favorited?(current_customer) %>
 
-    <%= link_to public_ramen_favorites_path(ramen.id), method: :delete do %>
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :delete, remote: true do %>
         <span style="color:red;">❤︎</span>
     <% end %>
 <% else %>
 
-    <%= link_to public_ramen_favorites_path(ramen.id), method: :post do %>
+    <%= link_to public_ramen_favorites_path(ramen.id), method: :post, remote: true do %>
         <span>︎♡</span>
     <% end %>
 <% end %>

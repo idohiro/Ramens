@@ -11,7 +11,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
    def create
-    current_customer.followers(params[:customer_id])
+    current_customer.follow(params[:customer_id])
     redirect_to request.referer
    end
   # フォロー外すとき
