@@ -41,8 +41,8 @@
                         <%= ramen.limited_information %>
                     </div>
                     <div>
-                    　<td id="favorite_buttons_<%= ramen.id %>">
-                  <%= render 'public/favorites/favorites', ramen: ramen %>
+                    　<div id="favorite_buttons_<%= ramen.id %>">
+                  <%= render 'public/favorites/favorites', ramen: ramen %></div>
                   </div>
 <!--                                                                      <#% if ramen.favorited?(current_customer) %>-->
 
