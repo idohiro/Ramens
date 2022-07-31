@@ -40,6 +40,6 @@ class Customer < ApplicationRecord
       @customer = Customer.all
     end
 
-  end
+   end
 
 end

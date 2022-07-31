@@ -11,13 +11,13 @@ has_many :ramen_comments, dependent: :destroy
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @ramen = Ramen.where("title LIKE?","#{word}")
+      @ramen = Ramen.where("name LIKE?","#{word}")
     elsif search == "forward_match"
-      @ramen = Ramen.where("title LIKE?","#{word}%")
+      @ramen = Ramen.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @ramen = Ramen.where("title LIKE?","%#{word}")
+      @ramen = Ramen.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @ramen = Ramen.where("title LIKE?","%#{word}%")
+      @ramen = Ramen.where("name LIKE?","%#{word}%")
     else
       @ramen = Ramen.all
     end
