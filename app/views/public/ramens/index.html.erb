@@ -1,66 +1,61 @@
 <div class = "container-sm" >
-    <div class = "row">
-        <div class ="title-name">
-            <h2 style="display:inline">ラーメン一覧 </h2>
-        </div>
+  <div class = "row">
+    <div class ="title-name">
+        <h2 style="display:inline">ラーメン一覧 </h2>
     </div>
-
-    <div class ="row">
-        <div class='col-md-8 offset-md-1'>
-        <%= render 'public/searchs/search' %>
-
-        <% @ramens.each do |ramen| %>
-
-            <div class="index-card">
-                <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
-                    <div class = "index-body">
-                          <% if ramen.ramen_image.attached? %>
-                            <%= image_tag ramen.ramen_image, size: "100x100" %>
-                            <% else %>
-                            <%= image_tag 'sample', size: "100x100" %>
-                          <% end %>
-                    </div>
-                    <div class="index-title">
-                        <label for="ramen_introduction"> 商品名</label>
-                        <%= ramen.name %>
-                    </div>
-                    <div class="index-title">
-                         <label for="ramen_introduction"> 金額</label>
-                        <%= ramen.price %>円（税抜き）
-                    </div>
-                     <div class="index-title">
-                        <label for="ramen_introduction"> 詳細</label>
-                        <%= ramen.introduction %>
-                    </div>
-                     <div class="index-title">
-                          <label for="ramen_introduction"> 店名</label>
-                        <%= ramen.shop_name %>
-                    </div>
-                     <div class="index-title">
-                       <label for="ramen_introduction">限定情報</label>
-                        <%= ramen.limited_information %>
-                    </div>
-                    <div>
-                    　<div id="favorite_buttons_<%= ramen.id %>">
-                  <%= render 'public/favorites/favorites', ramen: ramen %></div>
-                  </div>
-<!--                                                                      <#% if ramen.favorited?(current_customer) %>-->
-
-<!--    <%#= link_to public_ramen_favorites_path(ramen.id), method: :delete do %>-->
-<!--        <span style="color:red;">❤︎</span>-->
-<!--    <#% end %>-->
-<!--<#% else %>-->
-
-<!--    <#%= link_to public_ramen_favorites_path(ramen.id), method: :post do %>-->
-<!--        <span>︎♡</span>-->
-<!--    <#% end %>-->
-<!--<#% end %>-->
-
-                <% end %>
+  </div>
+  <div class ="row">
+    <div class='col-md-8 offset-md-1'>
+    <%= render 'public/searchs/search' %>
+    <% @ramens.each do |ramen| %>
+        <div class="index-card">
+            <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
+            <div class = "index-body">
+                  <% if ramen.ramen_image.attached? %>
+                    <%= image_tag ramen.ramen_image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'sample', size: "100x100" %>
+                  <% end %>
             </div>
+            <div class="index-title">
+                <label for="ramen_introduction"> 商品名</label>
+                <%= ramen.name %>
+            </div>
+            <div class="index-title">
+                 <label for="ramen_introduction"> 金額</label>
+                <%= ramen.price %>円（税抜き）
+            </div>
+             <div class="index-title">
+                <label for="ramen_introduction"> 詳細</label>
+                <%= ramen.introduction %>
+            </div>
+             <div class="index-title">
+                  <label for="ramen_introduction"> 店名</label>
+                <%= ramen.shop_name %>
+            </div>
+             <div class="index-title">
+               <label for="ramen_introduction">限定情報</label>
+                <%= ramen.limited_information %>
+            </div>
+            <div>
+            　<div id="favorite_buttons_<%= ramen.id %>">
+          <%= render 'public/favorites/favorites', ramen: ramen %></div>
+          </div>
+  <!--                                                                      <#% if ramen.favorited?(current_customer) %>-->
 
-        <% end %>
+  <!--    <%#= link_to public_ramen_favorites_path(ramen.id), method: :delete do %>-->
+  <!--        <span style="color:red;">❤︎</span>-->
+  <!--    <#% end %>-->
+  <!--<#% else %>-->
+
+  <!--    <#%= link_to public_ramen_favorites_path(ramen.id), method: :post do %>-->
+  <!--        <span>︎♡</span>-->
+  <!--    <#% end %>-->
+  <!--<#% end %>-->
+          <% end %>
         </div>
+      <% end %>
     </div>
-<%#= paginate @ramens %>
+  </div>
+  <%#= paginate @ramens %>
 </div>

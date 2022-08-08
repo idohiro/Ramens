@@ -1,34 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-1">
-    <h2 class = "title-name"><%= @customer.name %>さんの会員詳細</h2>
-    <table class= "table none">
+      <h2 class = "title-name"><%= @customer.name %>さんの会員詳細</h2>
+      <table class= "table none">
         <tbody class="none">
           <tr class="none">
-              <th class = "none">会員ID</th>
-              <th class = "none"><%= @customer.id %></th>
+            <th class = "none">会員ID</th>
+            <th class = "none"><%= @customer.id %></th>
           </tr>
           <tr class="none">
-              <th class = "none">氏名</th>
-              <th class = "none"><%= @customer.name %></th>
+            <th class = "none">氏名</th>
+            <th class = "none"><%= @customer.name %></th>
           </tr>
           <tr class="none">
-              <th class = "none">メールアドレス</th>
-              <th class = "none"><%= @customer.email %></th>
+            <th class = "none">メールアドレス</th>
+            <th class = "none"><%= @customer.email %></th>
           </tr>
           <tr class="none">
-              <th class = "none">ステータス</th>
-                <% if @customer.is_deleted == true %>
-                    <th class = "none red">無効</th>
-                <% else %>
-                    <th class = "none green">有効</th>
-                <% end %>
+            <th class = "none">ステータス</th>
+            <% if @customer.is_deleted == true %>
+            <th class = "none red">無効</th>
+            <% else %>
+            <th class = "none green">有効</th>
+            <% end %>
           </tr>
         </tbody>
-    </table>
-    <!--  <div class='customer-show'>-->
-         <span> <%#= link_to edit_admin_customer_path(@customer),class: "customer-show-edit btn btn-success edit_public_customer_#{@customer.id}" do %> <%# end %></span>
-    <!--</div>-->
+      </table>
+      <!--  <div class='customer-show'>-->
+           <span> <%#= link_to edit_admin_customer_path(@customer),class: "customer-show-edit btn btn-success edit_public_customer_#{@customer.id}" do %> <%# end %></span>
+      <!--</div>-->
     </div>
   </div>
 </div>

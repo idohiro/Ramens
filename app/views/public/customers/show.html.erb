@@ -1,11 +1,9 @@
 <div class='container px-5 px-sm-0'>
-
   <div class="row">
-
     <div class='col-md-3'>
-                <%= render 'public/searchs/search' %>
-    <h2 class="item-title-name">マイページ</h2>
-       <div class = "customer-show-title">
+        <%= render 'public/searchs/search' %>
+        <h2 class="item-title-name">マイページ</h2>
+        <div class = "customer-show-title">
             <h3 style="display:inline">登録情報</h3>
             <% if @customer.id == current_customer.id %>
             <span style="display:inline"> <%= link_to edit_public_customer_path(@customer),class: "btn btn-success edit_public_customer_#{@customer.id}" do %> 編集する<% end %></span>
@@ -15,25 +13,25 @@
        </div>
        <div class = "customer-show">
           <table class="table">
-               <tbody>
-                  <tr>
-                     <th>名前</th>
-                     <th class = "show-name"><%= @customer.name %></th>
-                  </tr>
-                  <tr>
-                     <th>メールアドレス</th>
-                     <th class = "show-name"><%= @customer.email %></th>
-                  </tr>
-              </tbody>
+            <tbody>
+              <tr>
+                 <th>名前</th>
+                 <th class = "show-name"><%= @customer.name %></th>
+              </tr>
+              <tr>
+                 <th>メールアドレス</th>
+                 <th class = "show-name"><%= @customer.email %></th>
+              </tr>
+            </tbody>
           </table>
        </div>
-       </div>
-   <div class="col-md-8 offset-md-1">
+     </div>
+     <div class="col-md-8 offset-md-1">
        <div class='field'>
          <h3 style="display:inline">ラーメン一覧　</h3><span class=""> <%= link_to public_ramens_path(),class: "btn btn-primary" do %>  一覧を見る<% end %></span>
          <p><%=link_to"お気に入り記事",favorites_public_customer_path(@customer) %></p>
        </div>
-   <%= render 'info',customer: @customer %>
-    </div>
+       <%= render 'info',customer: @customer %>
+     </div>
     </div>
 </div>

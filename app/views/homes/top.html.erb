@@ -1,38 +1,34 @@
 <div class="container px-5 px-sm-0">
-    <div class="row">
-      <div class="col-md-1">
-
-
-        </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8 offset-md-1">
       <div class="col-md-8 offset-md-1">
-        <div class="col-md-8 offset-md-1">
-          <p>Ramens</br>
-             このサイトはラーメン好きによるSNSサイトになります。</br>
-             会員でない方も商品の閲覧はできますが、</br>より詳細の情報には会員登録が必要になります。</p>
-          <h2>投稿</h2>
-          <div class = "top-card">
-            <% @ramens.each do |ramen| %>
-              <div class="index-card">
-                  <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
-                  <div class = "index-body">
-                   <% if ramen.ramen_image.attached? %>
-                   <%= image_tag ramen.ramen_image, size: "100x100" %>
-                   <% else %>
-                   <%= image_tag 'sample', size: "100x100" %>
-                   <% end %>
-                  </div>
-                  <div class="index-title">
-                    
-                          <%= ramen.name %>
-                  </div>
-                  <div class="index-title">
-                          ￥<%= ramen.price %>円
-                  </div>
-                  <% end %>
+        <p>Ramens<br/>
+           このサイトはラーメン好きによるSNSサイトになります。<br/>
+           会員でない方も商品の閲覧はできますが、<br/>より詳細の情報には会員登録が必要になります。</p>
+        <h2>投稿</h2>
+        <div class = "top-card">
+          <% @ramens.each do |ramen| %>
+            <div class="index-card">
+              <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
+              <div class = "index-body">
+               <% if ramen.ramen_image.attached? %>
+               <%= image_tag ramen.ramen_image, size: "100x100" %>
+               <% else %>
+               <%= image_tag 'sample', size: "100x100" %>
+               <% end %>
               </div>
-        <% end %>
-          </div>
+              <div class="index-title">
+                      <%= ramen.name %>
+              </div>
+              <div class="index-title">
+                      ￥<%= ramen.price %>円
+              </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-       </div>
-    </div>
+      </div>
+     </div>
   </div>
+</div>

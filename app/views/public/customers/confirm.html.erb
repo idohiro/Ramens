@@ -5,8 +5,8 @@
 <div class = "customer-destroy">
     <span><%= link_to public_customer_path(current_customer), class: "btn btn-primary confilm_public_customer_#{}" do %> 退会しない<% end %></span>
     <%= form_with(url: withdraw_public_customers_path,local:true,method: :patch)  do |f| %>
-        <div class="destory-btn">
+    <div class="destory-btn">
             <%= f.submit "退会する", class: 'btn btn-danger destroy-btn' %>
-        </div>
+    </div>
     <% end %>
 </div>

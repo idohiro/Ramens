@@ -3,6 +3,11 @@ class Ramen < ApplicationRecord
 belongs_to :customers,optional: true
 has_many :favorites, dependent: :destroy
 has_many :ramen_comments, dependent: :destroy
+validates :name, presence: true
+validates :shop_name, presence: true
+validates :introduction, presence: true
+validates :price, presence: true
+
   has_one_attached :ramen_image
 
   def favorited?(customer)
@@ -26,7 +31,7 @@ has_many :ramen_comments, dependent: :destroy
 
     def get_ramen_image(width, height)
         unless ramen_image.attached?
-            file_path = Rails.root.join('app/assets/images/sample.jpg')
+          file_path = Rails.root.join('app/assets/images/sample.jpg')
         end
     end
 
