@@ -6,7 +6,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followers
-     @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id])
     @customers = @customer.followers
   end
 
@@ -14,12 +14,9 @@ class Public::RelationshipsController < ApplicationController
     current_customer.follow(params[:customer_id])
     redirect_to request.referer
    end
-  # フォロー外すとき
   def destroy
     current_customer.unfollow(params[:customer_id])
     redirect_to request.referer
   end
-  # フォロー一覧
 
-  # フォロワー一覧
 end

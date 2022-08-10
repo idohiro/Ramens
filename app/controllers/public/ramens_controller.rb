@@ -3,7 +3,7 @@ class Public::RamensController < ApplicationController
     # before_action :correct_customer, only: [:edit, :update]
   def index
     @ramens = Ramen.all
-     @ramen = Ramen.new
+    @ramen = Ramen.new
   end
 
   def new
@@ -16,14 +16,13 @@ class Public::RamensController < ApplicationController
 
   def show
     @ramen =  Ramen.find(params[:id])
-      @comment = RamenComment.new
-     @comments = @ramen.ramen_comments
+    @comment = RamenComment.new
+    @comments = @ramen.ramen_comments
   end
 
   def create
     #byebug
     @ramen = Ramen.new(public_ramen_params)
-
     if @ramen.save
       redirect_to public_ramen_path(@ramen.id)
     else
@@ -32,7 +31,7 @@ class Public::RamensController < ApplicationController
   end
 
   def update
-     @ramen = Ramen.find(params[:id])
+    @ramen = Ramen.find(params[:id])
     if @ramen.update(public_ramen_params)
       redirect_to public_ramen_path(@ramen), notice: "You have updated book successfully."
     else

@@ -1,13 +1,12 @@
 class Public::CustomersController < ApplicationController
  before_action :authenticate_customer!, except: [:top,:about]
 
-
   def show
     @customer= Customer.find(params[:id])
   end
 
   def index
-       @customers = Customer.all
+    @customers = Customer.all
     @ramen = Ramen.new
     @customer = current_customer
   end
@@ -22,7 +21,7 @@ class Public::CustomersController < ApplicationController
   end
   def update
     @customer = Customer.find(params[:id])
-     @customer.update(customer_params)
+    @customer.update(customer_params)
      if @customer.save
       redirect_to public_customer_path(), notice: "You have updated user successfully."
      else

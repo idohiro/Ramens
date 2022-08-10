@@ -12,7 +12,7 @@ class Public::SearchsController < ApplicationController
   end
 
   def search_result
-     @customers = Customer.looks(params[:search], params[:word])
-   @ramens = Ramen.looks(params[:search], params[:word])
+    @customers = Customer.looks(params[:search], params[:word])
+    @ramens = Ramen.looks(params[:search], params[:word])
   end
 end
