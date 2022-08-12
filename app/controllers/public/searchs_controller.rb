@@ -4,10 +4,10 @@ class Public::SearchsController < ApplicationController
 
     if @range == "Customer"
       @customers = Customer.looks(params[:search], params[:word])
-      redirect_to public_search_result_path
+      redirect_to public_search_result_path()
     else
       @ramens = Ramen.looks(params[:search], params[:word])
-       redirect_to public_search_result_path
+       redirect_to public_search_result_path()
     end
   end
 

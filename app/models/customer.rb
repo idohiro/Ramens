@@ -18,28 +18,27 @@ class Customer < ApplicationRecord
     relationships.create(followed_id: customer_id)
  end
 
-  # フォローを外すときの処理
-  def unfollow(customer_id)
+
+ def unfollow(customer_id)
     relationships.find_by(followed_id: customer_id).destroy
-  end
-  # フォローしているか判定
-  def following?(customer)
+ end
+
+ def following?(customer)
     followings.include?(customer)
+ end
+
+ def self.looks(search, word)
+  if search == "perfect_match"
+    @customer = Customer.where("name LIKE?", "#{word}")
+  elsif search == "forward_match"
+    @customer = Customer.where("name LIKE?","#{word}%")
+  elsif search == "backward_match"
+    @customer = Customer.where("name LIKE?","%#{word}")
+  elsif search == "partial_match"
+    @customer = Customer.where("name LIKE?","%#{word}%")
+  else
+    @customer = Customer.all
   end
-
-   def self.looks(search, word)
-    if search == "perfect_match"
-      @customer = Customer.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @customer = Customer.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @customer = Customer.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @customer = Customer.where("name LIKE?","%#{word}%")
-    else
-      @customer = Customer.all
-    end
-
-   end
+ end
 
 end

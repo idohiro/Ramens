@@ -1,6 +1,5 @@
 <h2>Results index</h2>
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
   <% if @range == "Customer" %>
     <tbody>
       <% @customers.each do |customer| %>
@@ -10,7 +9,6 @@
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがRamenの時) -->
     <tbody>
       <% @ramens.each do |ramen| %>
         <tr>
