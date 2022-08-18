@@ -30,9 +30,7 @@ validates :price, presence: true
 
 
     def get_ramen_image(width, height)
-        unless ramen_image.attached?
-          file_path = Rails.root.join('app/assets/images/sample.jpg')
-        end
+      (ramen_image.attached?) ? ramen_image : 'sample.jpeg'
     end
 
 end
