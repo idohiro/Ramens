@@ -29,8 +29,8 @@ validates :price, presence: true
   end
 
 
-    def get_ramen_image(width, height)
-      (ramen_image.attached?) ? ramen_image : 'sample.jpeg'
-    end
+    # def get_ramen_image(width, height)
+    #   (ramen_image.attached?) ? ramen_image : 'sample.jpeg'
+    # end
 
 end

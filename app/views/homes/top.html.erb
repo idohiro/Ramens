@@ -12,11 +12,11 @@
             <div class="index-card">
               <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>
               <div class = "index-body">
-               <% if ramen.ramen_image.attached? %>
-               <%= image_tag ramen.ramen_image, size: "100x100" %>
-               <% else %>
+               <%# if ramen.ramen_image.attached? %>
+               <%#= image_tag ramen.ramen_image, size: "100x100" %>
+               <%# else %>
 
-               <% end %>
+               <%# end %>
               </div>
               <div class="index-title">
                       <%= ramen.name %>
