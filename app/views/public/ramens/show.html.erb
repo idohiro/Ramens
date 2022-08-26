@@ -38,17 +38,16 @@
                     </tr>
                     <tr class = "none">
                         <th class = "none">
-                            <%# if @ramen.customer == current_customer %>
-                               <%# if @ramen.current_customer == current_customer %>
+                            <%# if @customer == current_customer %>
                             <div class = "edit">
                                 <%= link_to "編集する", edit_public_ramen_path(@ramen.id), class: "btn btn-success" %>
                             </div>
                             <div class = "destroy">
                                 <%= link_to "削除する", public_ramen_path(@ramen.id),method: :delete, class: "btn btn-danger" %>
                             </div>
-                            <!--<%# else %>-->
-                            <!--<div></div>-->
-                            <!--<%# end %>-->
+                            <%# else %>
+                            <div></div>
+                            <%# end %>
                         </th>
                     </tr>
                 　　<td id="favorite_buttons_<%= @ramen.id %>">

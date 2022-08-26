@@ -18,7 +18,7 @@ class Public::RamensController < ApplicationController
     @ramen =  Ramen.find(params[:id])
     @comment = RamenComment.new
     @comments = @ramen.ramen_comments
-    #@customer = @ramen.customer
+    #@customer = @ramen.Customer.find_by(id: @ramen.id)
   end
 
   def create
