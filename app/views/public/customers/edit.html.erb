@@ -35,7 +35,10 @@
           <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
         </div>
         <div style="display:inline" class= "customer-edit-destroy">
-          <span><%= link_to public_customers_confirm_path(current_customer), class: "btn btn-danger confirm_public_customer_#{@customer.id}" do %> 退会する<% end %></span>
+           <span><%= link_to public_customers_confirm_path(current_customer), class: "btn btn-danger confirm_public_customer_#{@customer.id}" do %> 退会する<% end %></span>
+        </div>
+        <div>
+         <%= link_to 'back', public_customer_path(@customer), class: "back" %>
         </div>
        </div>
       <% end %>
