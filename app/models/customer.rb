@@ -27,18 +27,15 @@ class Customer < ApplicationRecord
     followings.include?(customer)
  end
 
- def self.looks(search, word)
-  if search == "perfect_match"
-    @customer = Customer.where("name LIKE?", "#{word}")
-  elsif search == "forward_match"
-    @customer = Customer.where("name LIKE?","#{word}%")
-  elsif search == "backward_match"
-    @customer = Customer.where("name LIKE?","%#{word}")
-  elsif search == "partial_match"
-    @customer = Customer.where("name LIKE?","%#{word}%")
-  else
-    @customer = Customer.all
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
   end
- end
-
 end
