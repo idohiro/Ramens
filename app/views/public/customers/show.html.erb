@@ -4,7 +4,6 @@
         <%= render 'public/searchs/search' %>
         <h2 class="item-title-name">マイページ</h2>
         <div class = "customer-show-title">
-            <h3 style="display:inline">登録情報</h3>
             <% if @customer.id == current_customer.id %>
             <span style="display:inline"> <%= link_to edit_public_customer_path(@customer),class: "btn btn-success edit_public_customer_#{@customer.id}" do %> 編集する<% end %></span>
             <% else %>
