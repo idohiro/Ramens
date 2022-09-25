@@ -6,7 +6,7 @@
   </div>
   <div class ="row">
     <div class='col-md-8 offset-md-1'>
-    <%= render 'public/searchs/search' %>
+    <%= render 'public/searchs/form' %>
     <% @ramens.each do |ramen| %>
         <div class="index-card">
             <%= link_to public_ramen_path(ramen.id), {class: "link"} do %>

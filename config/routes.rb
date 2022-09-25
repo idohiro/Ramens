@@ -32,14 +32,15 @@ devise_for :customers,skip: [:passwords], controllers: {
        resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+
     end
 
      resources :ramens, only: [ :index, :edit, :update, :create, :show, :destroy, :new] do
          resource :favorites, only: [:create, :destroy]
         resources :ramen_comments, only: [:create, :destroy]
      end
-   get "search" => "searchs#search"
-    get "search_result" =>"searchs#search_result"
+      get "search" => "searchs#search"
+
 
      post 'ramen/:id' => 'ramens#show'
   end

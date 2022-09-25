@@ -14,23 +14,20 @@ validates :price, presence: true
    favorites.where(customer_id: customer.id).exists?
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @ramen = Ramen.where("name LIKE?","#{word}")
-    elsif search == "forward_match"
-      @ramen = Ramen.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @ramen = Ramen.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @ramen = Ramen.where("name LIKE?","%#{word}%")
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Ramen.where(name: content)
+    elsif method == 'forward'
+      Ramen.where('name LIKE ?', content+'%')
+    elsif method == 'backward'
+      Ramen.where('name LIKE ?', '%'+content)
     else
-      @ramen = Ramen.all
+      Ramen.where('name LIKE ?', '%'+content+'%')
     end
   end
+end
 
 
     # def get_ramen_image(width, height)
     #   (ramen_image.attached?) ? ramen_image : 'sample.jpeg'
     # end
-
-end
